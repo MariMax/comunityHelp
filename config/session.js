@@ -31,9 +31,9 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // cookie: {
-  //   maxAge: 24 * 60 * 60 * 1000
-  // },
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -57,6 +57,13 @@ module.exports.session = {
   // ttl: <redis session TTL in seconds>,
   // db: 0,
   // pass: <redis auth password>,
+  // prefix: 'sess:',
+
+  // adapter: 'redis',
+  // host: process.env.R_URL,
+  // port: process.env.R_PORT,
+  // db: process.env.R_RESOURCE,
+  // pass: process.env.R_PASS,
   // prefix: 'sess:',
 
 

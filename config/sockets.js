@@ -44,7 +44,7 @@ module.exports.sockets = {
   // -OR-
   //
 
-  adapter: 'redis',
+  adapter: 'socket.io-redis',
   host: process.env.R_URL,
   port: process.env.R_PORT,
   db: process.env.R_RESOURCE,
