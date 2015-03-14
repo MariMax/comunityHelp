@@ -1,0 +1,3 @@
+{
+	"ignore": [".tmp/*", "assets/*","gulp/*","node_modules/*"] 
+}
