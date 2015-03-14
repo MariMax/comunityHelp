@@ -89,12 +89,12 @@ gulp.task('fonts', function() {
 
 gulp.task('misc', function() {
     return gulp.src('assets/src/**/*.ico')
-        .pipe(gulp.dest('.tmp/piblic'))
+        .pipe(gulp.dest('.tmp/public'))
         .pipe($.size());
 });
 
 gulp.task('clean', function(done) {
-    $.del(['.tmp', 'bower_components'], done);
+    $.del(['.tmp', 'asets/src/bower_components'], done);
 });
 
 gulp.task('build', ['bower'], function(done) {

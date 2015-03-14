@@ -40,7 +40,7 @@ gulp.task('serve', ['watch'], function () {
     'assets/src/assets/images/**/*',
     'assets/src/*.html',
     'assets/src/app/**/*.html',
-    'assets/src/{css,assets}/**/*.css'
+    'assets/src/{css,styles,assets}/**/*.css'
   ]);
 });
 

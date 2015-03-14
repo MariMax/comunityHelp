@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('injectCss',['compileCss'], function() {
     return gulp.src('assets/src/index.html')
-        .pipe($.inject(gulp.src('assets/src/{css,assets}/**/*.css'), {
+        .pipe($.inject(gulp.src('assets/src/{css,styles,assets}/**/*.css'), {
             read: false,
             starttag: '<!-- inject:userCss -->',
             addRootSlash: false,

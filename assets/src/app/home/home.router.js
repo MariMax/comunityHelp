@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('mainModule').config(function($stateProvider) {
+angular.module('homeModule').config(function($stateProvider) {
     $stateProvider
         .state('home', {
             url: '/',
             templateUrl: 'app/home/views/home.html',
-            controller: 'MainCtrl'
+            controller: 'HomeController'
         });
 });
