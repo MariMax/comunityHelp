@@ -36,6 +36,14 @@ module.exports.routes = {
   //   view: 'homepage'
   // }
 
+  'get /auth/logout': 'AuthController.logout',//logout
+  'post /auth/local': 'AuthController.callback',//login
+  'post /auth/local/:action': 'AuthController.callback',//register
+
+  // 'get /auth/:provider': 'AuthController.provider',
+  // 'get /auth/:provider/callback': 'AuthController.callback',
+  // 'get /auth/:provider/:action': 'AuthController.callback',
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
