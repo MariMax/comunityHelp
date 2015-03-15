@@ -36,9 +36,13 @@ module.exports.routes = {
   //   view: 'homepage'
   // }
 
-  'get /auth/logout': 'AuthController.logout',//logout
-  'post /auth/local': 'AuthController.callback',//login
-  'post /auth/local/:action': 'AuthController.callback',//register
+  'get /auth/logout': {controller:'AuthController', action:'logout', cors:true},//logout
+  'post /auth/local': {controller:'AuthController', action:'callback', cors:true},//login
+  'post /auth/local/:action': {controller:'AuthController', action:'callback', cors:true},//register
+  'post /auth/local/reset': {controller:'AuthController', action:'reset', cors:true},//register
+  'get /auth/checkauth': {controller:'AuthController', action:'checkAuth', cors:true},
+
+  'get /settings': {controller:'SettingsController', action:'get', cors:true},
 
   // 'get /auth/:provider': 'AuthController.provider',
   // 'get /auth/:provider/callback': 'AuthController.callback',

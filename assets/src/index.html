@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" ng-app="sailsApp">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>sailsApp</title>
     <meta name="description" content="">
@@ -21,13 +22,14 @@
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
-    <!-- endinject -->     
+    <!-- endinject -->
     <!-- endbuild -->
-  </head>
-  <body>
+</head>
+
+<body ng-controller="AppCtrl">
 
 
-    <div class="app" id="app" ui-view></div>
+    <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -40,8 +42,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/firebase/firebase.js"></script>
-    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,assets/src}) scripts/app.js -->
@@ -53,11 +54,27 @@
 
     <script src="app/admin/admin.module.js"></script>
 
+    <script src="app/admin/services/admin.userServece.js"></script>
+
+    <script src="app/admin/services/admin.BackEnd.js"></script>
+
+    <script src="app/admin/directives/mbAside.js"></script>
+
+    <script src="app/admin/directives/asideFooter.js"></script>
+
+    <script src="app/admin/controllers/UsersActions.Controller.js"></script>
+
     <script src="app/admin/controllers/SignUp.Controller.js"></script>
 
     <script src="app/admin/controllers/SignIn.controller.js"></script>
 
+    <script src="app/admin/controllers/ProfileActions.Controller.js"></script>
+
     <script src="app/admin/controllers/Forgot.Controller.js"></script>
+
+    <script src="app/admin/controllers/EventsActions.Controller.js"></script>
+
+    <script src="app/admin/controllers/Action.Controller.js"></script>
 
     <script src="app/home/home.router.js"></script>
 
@@ -65,10 +82,15 @@
 
     <script src="app/main.js"></script>
 
+    <script src="app/config.js"></script>
+
+    <script src="app/backEndSharedSettings.js"></script>
+
     <!-- endinject -->
     <!-- inject:partials -->
-    <!-- endinject -->    
+    <!-- endinject -->
     <!-- endbuild -->
 
-  </body>
+</body>
+
 </html>

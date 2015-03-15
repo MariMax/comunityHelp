@@ -45,7 +45,7 @@ var Passport = {
     //
     // When the local strategy is employed, a password will be used as the
     // means of authentication along with either a username or an email.
-    password: { type: 'string', minLength: 8 },
+    password: { type: 'string', minLength: process.env.PASS_MIN_LENGTH },
 
     // Provider fields: Provider, identifer and tokens
     //

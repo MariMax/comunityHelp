@@ -27,7 +27,6 @@ exports.register = function (req, res, next) {
     , name = req.param('name')
     , lastName = req.param('lastName')
     , password = req.param('password');
-
   if (!email) {
     req.flash('error', 'Error.Passport.Email.Missing');
     return next(new Error('No email was entered.'));
@@ -49,9 +48,9 @@ exports.register = function (req, res, next) {
   }
 
   User.create({
-    name : user
-  , email    : email
-  , lastName    : lastName
+    name : name,
+    lastName: lastName,
+    email    : email
   }, function (err, user) {
     if (err) {
       if (err.code === 'E_VALIDATION') {
@@ -64,7 +63,6 @@ exports.register = function (req, res, next) {
 
       return next(err);
     }
-
     Passport.create({
       protocol : 'local'
     , password : password
@@ -120,6 +118,27 @@ exports.connect = function (req, res, next) {
     else {
       next(null, user);
     }
+  });
+};
+
+exports.update = function (req, res, user, newPass, next) {
+  var user     = req.user
+    , password = newPass;
+
+  Passport.findOne({
+    protocol : 'local'
+  , user     : user.id
+  }, function (err, passport) {
+    if (err) {
+      return next(err);
+    }
+
+      Passport.update({user: user.id},
+      {password : password}, 
+      function (err, passport) {
+        next(err, newPass);
+      });
+
   });
 };
 
