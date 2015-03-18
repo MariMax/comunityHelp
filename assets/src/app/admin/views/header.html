@@ -1,52 +1,58 @@
 <!-- navbar header -->
 <div class="navbar-header {{app.settings.navbarHeaderColor}}">
-    <button class="pull-right visible-xs dk" dropdown>
-        <i class="glyphicon glyphicon-cog" dropdown-toggle></i>
-        <ul class="dropdown-menu animated fadeInRight w">
-            <li>
-                <a ui-sref="admin.actionPanel.profile">Profile</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a ng-click="logout()">Logout</a>
-            </li>
-        </ul>
-    </button>
+  <button class="pull-right visible-xs dk" dropdown>
+    <i class="glyphicon glyphicon-cog" dropdown-toggle></i>
+    <ul class="dropdown-menu animated fadeInRight w">
+      <li>
+        <a ui-sref="admin.actionPanel.profile">Profile</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a ng-click="logout()">Logout</a>
+      </li>
+    </ul>
+  </button>
 
-    <button class="pull-right visible-xs" dropdown >
-        <i class="glyphicon glyphicon-align-justify" dropdown-toggle></i>
-        <ul class="dropdown-menu animated fadeInRight w">
-                        <li ui-sref-active="active">
-                    <a ui-sref="admin.actionPanel.events">
-                        <i class="icon-star icon"></i>
-                        <span>Events</span>
-                    </a>
-                </li>
-                <li ui-sref-active="active">
-                    <a ui-sref="admin.actionPanel.users">
-                        <i class="icon-user icon"></i>
-                        <span>Users</span>
-                    </a>
-                </li>
-                </ul>
-    </button>
-    <!-- brand -->
-    <a ui-sref="admin.actionPanel.users" class="navbar-brand text-lt">
-        <i class="fa fa-graduation-cap"></i>
-        <span class="hidden-folded m-l-xs" ng-bind="app.name"></span>
-    </a>
-    <!-- / brand -->
+  <button class="pull-right visible-xs" dropdown>
+    <i class="glyphicon glyphicon-align-justify" dropdown-toggle></i>
+    <ul class="dropdown-menu animated fadeInRight w">
+      <li ui-sref-active="active">
+        <a ui-sref="admin.actionPanel.events">
+          <i class="icon-star icon"></i>
+          <span>Events</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="admin.actionPanel.users">
+          <i class="icon-user icon"></i>
+          <span>Users</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="home">
+          <i class="icon-home icon"></i>
+          <span>Home page</span>
+        </a>
+      </li>
+    </ul>
+  </button>
+  <!-- brand -->
+  <a ui-sref="admin.actionPanel.users" class="navbar-brand text-lt">
+    <i class="fa fa-graduation-cap"></i>
+    <span class="hidden-folded m-l-xs" ng-bind="app.name"></span>
+  </a>
+  <!-- / brand -->
 </div>
 <!-- / navbar header -->
 
 <!-- navbar collapse -->
 <!-- <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}"> -->
 
-    <!-- search form -->
+<!-- search form -->
 <!--     <div mb-search-input></div> -->
-    <!-- / search form -->
-    <!-- nabar right -->
+<!-- / search form -->
+<!-- nabar right -->
 <!--     <bookmark-items></bookmark-items> -->
-    <!-- / navbar right -->
+<!-- / navbar right -->
 <!-- </div> -->
 <!-- / navbar collapse -->

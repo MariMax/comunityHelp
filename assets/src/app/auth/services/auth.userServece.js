@@ -22,9 +22,11 @@ angular.module('adminModule').factory('authUserService', function($q, authBackEn
         },
         setUser: function(_user) {
             user = _user;
+            user.loggedIn = true;
         },
         clean: function(){
-            user = null;
+            user.loggedIn = false;
+            user.admin = false;
         }
     };
 });

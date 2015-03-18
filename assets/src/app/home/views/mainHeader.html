@@ -1,0 +1,50 @@
+<!-- navbar header -->
+<div class="navbar-header {{app.settings.navbarHeaderColor}}">
+
+
+
+  <button class="pull-right hidden-xs" ng-show="!user.loggedIn">
+    <a ui-sref="auth.signIn">
+      <i class="fa fa-sign-in"></i>
+      <span>Sign In</span>
+    </a>
+  </button>
+
+  <button class="pull-right hidden-xs" ng-show="!user.loggedIn">
+    <a ui-sref="auth.signUp">
+      <i class="fa fa-thumbs-o-up"></i>
+      <span>Sign Up</span>
+    </a>
+  </button>
+
+  <button class="pull-right hidden-xs" ng-show="user.loggedIn">
+    <a ng-click="logout()">
+      <i class="fa fa-sign-out"></i>
+      <span>Logout</span>
+    </a>
+  </button>
+
+  <button class="pull-right visible-xs" dropdown>
+    <i class="glyphicon glyphicon-align-justify" dropdown-toggle></i>
+    <ul class="dropdown-menu animated fadeInRight w">
+      <li ui-sref-active="active" ng-show="!user.loggedIn">
+        <a ui-sref="auth.signIn">
+          <i class="fa fa-sign-in"></i>
+          <span>Sign In</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-show="!user.loggedIn">
+        <a ui-sref="auth.signUp">
+          <i class="fa fa-thumbs-o-up"></i>
+          <span>Sign Up</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-show="user.loggedIn">
+        <a ng-click="logout()">
+          <i class="fa fa-sign-out"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+    </ul>
+  </button>
+</div>
