@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adminModule').factory('adminUserService', function($q, backEnd) {
+angular.module('adminModule').factory('authUserService', function($q, authBackEnd) {
     var user;
     return {
         getUser: function() {
@@ -8,7 +8,7 @@ angular.module('adminModule').factory('adminUserService', function($q, backEnd) 
             if (user) {
                 defer.resolve(user);
             } else {
-                backEnd.checkAuth().then(function(resp) {
+              authBackEnd.checkAuth().then(function(resp) {
                     if (resp === 'unauthorized') {
                         defer.reject();
                     } else {

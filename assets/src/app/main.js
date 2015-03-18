@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sailsApp', ['ui.router', 'homeModule','adminModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage'])
+angular.module('sailsApp', ['ui.router', 'homeModule','adminModule', 'authModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage'])
     .config(function($urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adminModule')
+angular.module('authModule')
     .controller('ForgotController', function() {
-       
+
     });

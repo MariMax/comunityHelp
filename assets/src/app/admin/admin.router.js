@@ -1,72 +1,55 @@
 'use strict';
 
-angular.module('adminModule').config(function($stateProvider) {
+angular.module('adminModule').config(function ($stateProvider) {
 
-    function permissions() {
-        function permittionChecker(adminUserService, $q, $state) {
-            var defer = $q.defer();
-            //adminUserService.testCheck();
-            adminUserService.getUser().then(function(user) {
-                if (user.admin) {
-                    defer.resolve();
-                } else {
-                    $state.go('home');
-                    defer.reject();
-                }
-            }, function() {
-                $state.go('home');
-                defer.reject();
-            });
-            return defer.promise;
+  function permissions() {
+    function permissionsChecker(authUserService, $q, $state) {
+      var defer = $q.defer();
+      authUserService.getUser().then(function (user) {
+        if (user.admin) {
+          defer.resolve();
+        } else {
+          $state.go('home');
+          defer.reject();
         }
-
-        permittionChecker.$inject = ['adminUserService', '$q', '$state'];
-        return permittionChecker;
+      }, function () {
+        $state.go('home');
+        defer.reject();
+      });
+      return defer.promise;
     }
 
+    permissionsChecker.$inject = ['authUserService', '$q', '$state'];
+    return permissionsChecker;
+  }
 
 
-    $stateProvider
-        .state('admin', {
+  $stateProvider
+    .state('admin', {
 //            abstract: true,
-            template: '<div ui-view class="fade-in-right-big smooth"></div>'
-        })
-        .state('admin.signin', {
-            url: '/admin/signin',
-            templateUrl: 'app/admin/views/signIn.html',
-            controller: 'SignInController'
-        })
-        .state('admin.forgotpwd', {
-            url: '/admin/forgot',
-            templateUrl: 'app/admin/views/forgot.html',
-            controller: 'ForgotController'
-        })
-        .state('admin.signUp', {
-            url: '/admin/signup',
-            templateUrl: 'app/admin/views/signUp.html',
-            controller: 'SignUpController'
-        })
-        .state('admin.actionPannel', {
-            url: '/admin/action',
-            templateUrl: 'app/admin/views/action.html',
-            controller: 'ActionController',
-            resolve: {
-                permittions: permissions()
-            }
-        })
-        .state('admin.actionPannel.users',{
-            url: '/users',
-            templateUrl: 'app/admin/views/actionUsers.html',
-            controller: 'UsersActionsController',
-        })
-        .state('admin.actionPannel.events',{
-            url: '/events',
-            templateUrl: 'app/admin/views/actionEvents.html',
-            controller: 'EventsActionsController',
-        })
-        .state('admin.actionPannel.profile',{
-            url: '/profile',
-            templateUrl: 'app/admin/views/actionProfile.html',
-            controller: 'ProfileActionsController',
-        });
+      template: '<div ui-view class="fade-in-right-big smooth"></div>'
+    })
+    .state('admin.actionPanel', {
+      url: '/admin/action',
+      templateUrl: 'app/admin/views/action.html',
+      controller: 'ActionController',
+      resolve: {
+        permissions: permissions()
+      }
+    })
+    .state('admin.actionPanel.users', {
+      url: '/users',
+      templateUrl: 'app/admin/views/actionUsers.html',
+      controller: 'UsersActionsController'
+    })
+    .state('admin.actionPanel.events', {
+      url: '/events',
+      templateUrl: 'app/admin/views/actionEvents.html',
+      controller: 'EventsActionsController'
+    })
+    .state('admin.actionPanel.profile', {
+      url: '/profile',
+      templateUrl: 'app/admin/views/actionProfile.html',
+      controller: 'ProfileActionsController'
+    });
 });
