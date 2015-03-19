@@ -38,7 +38,7 @@ angular.module('sailsApp')
         settings: {
           themeID: 1,
           navbarHeaderColor: 'bg-black',
-          navbarCollapseColor: 'bg-white-only',
+          navbarCollapseColor: 'bg-black',
           asideColor: 'bg-black',
           headerFixed: true,
           asideFixed: true,

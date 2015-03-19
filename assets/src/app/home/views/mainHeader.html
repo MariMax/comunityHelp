@@ -1,29 +1,5 @@
 <!-- navbar header -->
-<div class="navbar-header {{app.settings.navbarHeaderColor}}">
-
-
-
-  <button class="pull-right hidden-xs" ng-show="!user.loggedIn">
-    <a ui-sref="auth.signIn">
-      <i class="fa fa-sign-in"></i>
-      <span>Sign In</span>
-    </a>
-  </button>
-
-  <button class="pull-right hidden-xs" ng-show="!user.loggedIn">
-    <a ui-sref="auth.signUp">
-      <i class="fa fa-thumbs-o-up"></i>
-      <span>Sign Up</span>
-    </a>
-  </button>
-
-  <button class="pull-right hidden-xs" ng-show="user.loggedIn">
-    <a ng-click="logout()">
-      <i class="fa fa-sign-out"></i>
-      <span>Logout</span>
-    </a>
-  </button>
-
+<div class="navbar-header {{app.settings.navbarHeaderColor}}" ng-controller="mainHeader">
   <button class="pull-right visible-xs" dropdown>
     <i class="glyphicon glyphicon-align-justify" dropdown-toggle></i>
     <ul class="dropdown-menu animated fadeInRight w">
@@ -47,4 +23,41 @@
       </li>
     </ul>
   </button>
+
+  <!-- brand -->
+  <a ui-sref="home" class="navbar-brand text-lt">
+    <i class="icon-home icon"></i>
+  </a>
+  <!-- / brand -->
 </div>
+
+<!-- navbar collapse -->
+<div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}"
+     ng-controller="mainHeader">
+  <ul class="nav navbar-nav navbar-right">
+    <li ng-show="!user.loggedIn">
+      <a class="pull-right " ui-sref="auth.signIn">
+        <!--<a ui-sref="auth.signIn">-->
+
+        <i class="fa fa-sign-in"></i>
+        <span>Sign In</span>
+        <!--</a>-->
+      </a></li>
+    <li ng-show="!user.loggedIn">
+      <a class="pull-right " ui-sref="auth.signUp">
+        <!--<a ui-sref="auth.signUp">-->
+        <i class="fa fa-thumbs-o-up"></i>
+        <span>Sign Up</span>
+        <!--</a>-->
+      </a></li>
+    <li ng-show="user.loggedIn">
+      <a href class="pull-right " ng-click="logout()">
+        <!--<a ng-click="logout()">-->
+        <i class="fa fa-sign-out"></i>
+        <span>Logout</span>
+        <!--</a>-->
+      </a></li>
+
+  </ul>
+</div>
+

@@ -189,7 +189,6 @@ body{
 }
 
 .navbar-header{
-  float:none;
 	> button{
 		text-decoration: none;
 		line-height: 30px;
@@ -220,12 +219,10 @@ body{
 }
 
 @media (min-width: 768px) {
-	.app-aside{
+  .app-aside,
+  .navbar-header {
     width: @app-aside-width;
   }
-//	.navbar-header {
-
-//	}
 	.navbar-collapse,
 	.app-content,
 	.app-footer{
@@ -262,30 +259,30 @@ body{
 			width: auto;
 		}
 
-//		.app-aside,
-//		.navbar-header {
-//			width: @app-aside-folded-width;
-//		}
-		.navbar-collapse,
-		.app-content,
-		.app-footer{
-			margin-left: @app-aside-folded-width;
-		}
-		.app-header{
-			.navbar-brand{
-				display: block;
-				padding: 0;
-			}
-		}
+    .app-aside,
+    .navbar-header {
+      width: @app-aside-folded-width;
+    }
+    .navbar-collapse,
+    .app-content,
+    .app-footer{
+      margin-left: @app-aside-folded-width;
+    }
+    .app-header{
+      .navbar-brand{
+        display: block;
+        padding: 0;
+      }
+    }
 
-	}
+  }
 
-	.app-aside-fixed{
-//		.app-header{
-//			.navbar-header{
-//				position: fixed;
-//			}
-//		}
+  .app-aside-fixed{
+    .app-header{
+      .navbar-header{
+        position: fixed;
+      }
+    }
 		.aside-wrap{
 			position: fixed;
 			overflow: hidden;
