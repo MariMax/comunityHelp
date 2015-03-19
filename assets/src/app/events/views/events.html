@@ -1,0 +1,32 @@
+<div class="fade-in-down ng-scope">
+  <div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">Events</h1>
+  </div>
+  <div class="wrapper-md ng-scope">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="blog-post">
+          <div class="panel" ng-repeat="post in events">
+            <div>
+              <img ng-src="post.image" class="img-full">
+            </div>
+            <div class="wrapper-lg">
+              <h2 class="m-t-none"><a href="" ng-bind="post.header"></a></h2>
+
+              <div>
+                <p ng-bind="post.description"></p>
+              </div>
+              <div class="line line-lg b-b b-light"></div>
+              <div class="text-muted" ng-show="user.admin">
+                <!--<i class="fa fa-user text-muted"></i> by <a href="" class="m-r-sm">Admin</a>-->
+                <!--<i class="fa fa-clock-o text-muted"></i> Feb 20, 2013-->
+                <!--<a href="" class="m-l-sm"><i class="fa fa-comment-o text-muted"></i> 2 comments</a>-->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

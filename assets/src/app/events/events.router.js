@@ -1,30 +1,9 @@
 'use strict';
 
-angular.module('adminModule').config(function ($stateProvider) {
-
-  //function permissions() {
-  //  function permissionsChecker(authUserService, $q, $state) {
-  //    var defer = $q.defer();
-  //    authUserService.getUser().then(function (user) {
-  //      if (user.admin) {
-  //        defer.resolve();
-  //      } else {
-  //        $state.go('home');
-  //        defer.reject();
-  //      }
-  //    }, function () {
-  //      $state.go('home');
-  //      defer.reject();
-  //    });
-  //    return defer.promise;
-  //  }
-  //
-  //  permissionsChecker.$inject = ['authUserService', '$q', '$state'];
-  //  return permissionsChecker;
-  //}
+angular.module('eventsModule').config(function ($stateProvider) {
 
   $stateProvider
-    .state('admin', {
+    .state('events', {
 //            abstract: true,
       template: '<div ui-view class="fade-in-right-big smooth"></div>'
     })
@@ -33,9 +12,7 @@ angular.module('adminModule').config(function ($stateProvider) {
       templateUrl: 'app/admin/views/action.html',
       controller: 'ActionController',
       resolve: {
-        permissions: function (checkPermission) {
-          return checkPermission.check();
-        }
+        permissions: permissions()
       }
     })
     .state('admin.actionPanel.users', {
