@@ -17,7 +17,7 @@ angular.module('adminModule').factory('authUserService', function ($q, authBackE
   return {
     getUser: function () {
       var defer = $q.defer();
-      if (user) {
+      if (user&&user.loggedIn) {
         defer.resolve(user);
       } else {
         authBackEnd.checkAuth().then(function (resp) {

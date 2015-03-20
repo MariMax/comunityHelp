@@ -48,6 +48,14 @@
     <!-- build:js({.tmp,assets/src}) scripts/app.js -->
     <!-- inject:userJS -->
 
+    <script src="app/auth/auth.module.js"></script>
+
+    <script src="app/auth/controllers/SignUp.Controller.js"></script>
+
+    <script src="app/auth/controllers/SignIn.controller.js"></script>
+
+    <script src="app/auth/controllers/Forgot.Controller.js"></script>
+
     <script src="app/permission/permission.module.js"></script>
 
     <script src="app/permission/services/permission.service.js"></script>
@@ -58,21 +66,17 @@
 
     <script src="app/home/controllers/home.controller.js"></script>
 
+    <script src="app/events/events.module.js"></script>
+
+    <script src="app/events/controllers/list.controller.js"></script>
+
     <script src="app/admin/admin.module.js"></script>
 
     <script src="app/auth/services/auth.userService.js"></script>
 
-    <script src="app/auth/auth.module.js"></script>
-
     <script src="app/auth/services/auth.BackEnd.js"></script>
 
     <script src="app/auth/services/auth.Actions.js"></script>
-
-    <script src="app/auth/controllers/SignUp.Controller.js"></script>
-
-    <script src="app/auth/controllers/SignIn.controller.js"></script>
-
-    <script src="app/auth/controllers/Forgot.Controller.js"></script>
 
     <script src="app/admin/directives/mbAside.js"></script>
 
@@ -88,9 +92,11 @@
 
     <script src="app/admin/controllers/Action.Controller.js"></script>
 
-    <script src="app/home/home.router.js"></script>
+    <script src="assets/js/sails.io.js"></script>
 
-    <script src="app/events/events.module.js"></script>
+    <script src="app/socket/socket.module.js"></script>
+
+    <script src="app/home/home.router.js"></script>
 
     <script src="app/events/events.router.js"></script>
 
@@ -108,7 +114,9 @@
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
-
+    <script>
+      io.sails.autoConnect = false;
+    </script>
 </body>
 
 </html>
