@@ -15,10 +15,15 @@ angular.module('eventsModule').config(function ($stateProvider) {
         user:function(authUserService, $q, $state){
           var defer = $q.defer();
           authUserService.getUser().then(function(user){
-            defer.resolve();
+            if (user&&user.loggedIn) {
+              defer.resolve();
+            } else{
+              defer.reject();
+              $state.go('auth.signIn');
+            }
           }, function(){
             defer.reject();
-            
+            $state.go('auth.signIn');
           });
 
           return defer.promise;
