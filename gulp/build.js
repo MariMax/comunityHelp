@@ -88,9 +88,7 @@ gulp.task('bowerFonts', function() {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src()
-    .pipe($.filter('assets/src/fonts/**/*.{eot,svg,ttf,woff,woff2}'))
-    .pipe($.flatten())
+  return gulp.src('assets/src/fonts/**/*.{eot,svg,ttf,woff,woff2}')
     .pipe(gulp.dest('.tmp/public/fonts'))
     .pipe($.size());
 });
