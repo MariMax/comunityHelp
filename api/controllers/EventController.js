@@ -36,7 +36,7 @@ module.exports = {
     });
   },
   remove:function(req, res){
-    Event.destroy(req.body.id, function (err, events) {
+    Event.destroy({id:req.body.id}, function (err, events) {
       if (err) {
         res.send(500);
       } else {
