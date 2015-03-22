@@ -79,12 +79,19 @@ gulp.task('images', function() {
         .pipe($.size());
 });
 
-gulp.task('fonts', function() {
+gulp.task('bowerFonts', function() {
     return gulp.src($.mainBowerFiles())
-        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
         .pipe($.flatten())
         .pipe(gulp.dest('.tmp/public/fonts'))
         .pipe($.size());
+});
+
+gulp.task('fonts', function() {
+  return gulp.src()
+    .pipe($.filter('assets/src/fonts/**/*.{eot,svg,ttf,woff,woff2}'))
+    .pipe(gulp.dest('.tmp/public/fonts'))
+    .pipe($.size());
 });
 
 gulp.task('misc', function() {
@@ -98,5 +105,5 @@ gulp.task('clean', function(done) {
 });
 
 gulp.task('build', ['bower'], function(done) {
-    runSequence(['html', 'images', 'fonts', 'misc'], done);
+    runSequence(['html', 'images', 'fonts', 'bowerFonts', 'misc'], done);
 });
