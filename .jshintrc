@@ -21,6 +21,7 @@
   "validthis": true,
   "globals": {
     "angular": false,
-    "io":false
+    "io":false,
+    "_":false
   }
 }

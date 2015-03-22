@@ -10,13 +10,12 @@
         <div class="blog-post">
           <div class="panel" ng-repeat="post in events">
             <div>
-              <img ng-src="post.image" class="img-full">
+              <img ng-src="{{post.image}}" class="img-full">
             </div>
             <div class="wrapper-lg">
               <h2 class="m-t-none"><a href="" ng-bind="post.header"></a></h2>
 
-              <div>
-                <p ng-bind="post.description"></p>
+              <div ng-bind-html="post.description">
               </div>
               <!--<div class="line line-lg b-b b-light"></div>-->
               <!--<div class="text-muted" ng-show="user.admin">-->

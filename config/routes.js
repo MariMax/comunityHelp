@@ -40,10 +40,14 @@ module.exports.routes = {
   'post /auth/local/login': {controller:'AuthController', action:'callback', cors:true},//login
   'post /auth/local/:action': {controller:'AuthController', action:'callback', cors:true},//register
   'post /auth/local/reset': {controller:'AuthController', action:'reset', cors:true},//register
-  'get /auth/checkauth': {controller:'AuthController', action:'checkAuth', cors:true},
+  'get /auth/checkAuth': {controller:'AuthController', action:'checkAuth', cors:true},
 
   'get /settings': {controller:'SettingsController', action:'get', cors:true},
-
+  'post /file/upload':{controller:'FileController', action:'s3upload', cors:true},
+  'post /event/save':{controller:'EventController', action:'save', cors:true},
+  'get /event/getList':{controller:'EventController', action:'getList', cors:true},
+  'post /event/get':{controller:'EventController', action:'get', cors:true},
+  'delete /event/delete':{controller:'EventController', action:'remove', cors:true}
   // 'get /auth/:provider': 'AuthController.provider',
   // 'get /auth/:provider/callback': 'AuthController.callback',
   // 'get /auth/:provider/:action': 'AuthController.callback',
