@@ -90,6 +90,7 @@ gulp.task('bowerFonts', function() {
 gulp.task('fonts', function() {
   return gulp.src()
     .pipe($.filter('assets/src/fonts/**/*.{eot,svg,ttf,woff,woff2}'))
+    .pipe($.flatten())
     .pipe(gulp.dest('.tmp/public/fonts'))
     .pipe($.size());
 });
