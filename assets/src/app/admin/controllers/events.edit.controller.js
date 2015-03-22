@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('adminModule')
-  .controller('EditController', function($scope, $state, FileUploader, baseUrl, adminBackEnd, event, $document) {
+  .controller('EditController', function($scope, $state, FileUploader, baseUrl, adminBackEnd, event) {
     var scope = $scope;
 
     var uploader = scope.uploader = new FileUploader({
@@ -13,7 +13,7 @@ angular.module('adminModule')
     if (event){
       scope.header = 'Edit event';
       scope.event = event.data;// event;
-      var description = $document.getElementById('wysiwyg');
+      var description = document.getElementById('wysiwyg');
       angular.element(description).html(scope.event.description);
     } else {
       scope.header = 'Create event';
@@ -40,7 +40,7 @@ angular.module('adminModule')
 
       scope.spinner = true;
 
-      var description = $document.getElementById('wysiwyg');
+      var description = document.getElementById('wysiwyg');
       scope.fileError = null;
       scope.event.description = angular.element(description).html();
       if (uploader.queue.length===0){
