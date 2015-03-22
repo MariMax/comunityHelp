@@ -13,7 +13,7 @@ angular.module('adminModule').factory('adminBackEnd', function(baseUrl, $http){
         return $http.post(baseUrl+'/event/get',{id:id});
       },
       remove:function(id){
-        return $http.delete(baseUrl+'/event/delete',{id:id});
+        return $http.post(baseUrl+'/event/delete',{id:id});
       }
     }
   };

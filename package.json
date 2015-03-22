@@ -53,8 +53,7 @@
     "nodemailer-ses-transport": "^1.2.0",
     "nodemailer-express-handlebars": "0.0.3",
     "skipper-s3": "^0.5.5",
-    "aws-sdk": "^2.1.18",
-    "gulp-imagemin": "^2.2.1"
+    "aws-sdk": "^2.1.18"
   },
   "scripts": {
     "start": "node app.js",

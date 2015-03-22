@@ -70,11 +70,6 @@ gulp.task('html', ['injects', 'scripts', 'partials'], function() {
 
 gulp.task('images', function() {
     return gulp.src('assets/src/assets/images/**/*')
-        .pipe($.cache($.imagemin({
-             optimizationLevel: 3,
-             progressive: true,
-             interlaced: true
-        })))
         .pipe(gulp.dest('.tmp/public/assets/images'))
         .pipe($.size());
 });

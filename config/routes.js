@@ -47,7 +47,7 @@ module.exports.routes = {
   'post /event/save':{controller:'EventController', action:'save', cors:true},
   'get /event/getList':{controller:'EventController', action:'getList', cors:true},
   'post /event/get':{controller:'EventController', action:'get', cors:true},
-  'delete /event/delete':{controller:'EventController', action:'remove', cors:true}
+  'post /event/delete':{controller:'EventController', action:'remove', cors:true}
   // 'get /auth/:provider': 'AuthController.provider',
   // 'get /auth/:provider/callback': 'AuthController.callback',
   // 'get /auth/:provider/:action': 'AuthController.callback',
