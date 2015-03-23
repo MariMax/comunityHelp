@@ -2,10 +2,11 @@
 
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
+var gulpNgConfig = require('gulp-ng-config');
 
 
 var $ = require('gulp-load-plugins')({
-    pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
+    pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del', 'gulpNgConfig']
 });
 
 gulp.task('scripts', function() {
@@ -13,6 +14,18 @@ gulp.task('scripts', function() {
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.size());
+});
+
+gulp.task('setConfig:dev',['removeConfig'], function(){
+  gulp.src('devConfig.json')
+    .pipe(gulpNgConfig('sailsApp.config'))
+    .pipe(gulp.dest('assets/src/app/config'))
+});
+
+gulp.task('setConfig:dist',['removeConfig'], function(){
+  gulp.src('distConfig.json')
+    .pipe(gulpNgConfig('sailsApp.config'))
+    .pipe(gulp.dest('assets/src/app/config'))
 });
 
 gulp.task('partials', function() {
@@ -103,6 +116,10 @@ gulp.task('clean', function(done) {
     $.del(['.tmp', 'asets/src/bower_components'], done);
 });
 
+gulp.task('removeConfig', function(done){
+  $.del(['assets/src/app/config'], done);
+});
+
 gulp.task('build', ['bower'], function(done) {
-    runSequence(['html', 'images', 'fonts', 'bowerFonts', 'misc'], done);
+    runSequence(['setConfig:dist','html', 'images', 'fonts', 'bowerFonts', 'misc'], done);
 });

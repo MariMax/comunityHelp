@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sailsApp', ['ui.router', 'homeModule', 'adminModule', 'authModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'permissionModule', 'socketModule', 'eventsModule', 'ui.jq', 'angularFileUpload', 'ngSanitize', 'commonModule'])
+angular.module('sailsApp', ['ui.router', 'homeModule', 'adminModule', 'authModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'permissionModule', 'socketModule', 'eventsModule', 'ui.jq', 'angularFileUpload', 'ngSanitize', 'commonModule', 'sailsApp.config'])
   .config(function ($urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
     $urlRouterProvider.otherwise('/');

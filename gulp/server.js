@@ -2,6 +2,8 @@
 
 var gulp = require('gulp');
 
+var runSequence = require('run-sequence');
+
 var util = require('util');
 
 var browserSync = require('browser-sync');
@@ -17,7 +19,7 @@ function browserSyncInit(baseDir, files, browser, baseFile) {
     routes = {
       // Should be '/bower_components': '../bower_components'
       // Waiting for https://github.com/shakyShane/browser-sync/issues/308
-      '/bower_components': './../bower_components',
+      '/bower_components': './../bower_components'
     };
   }
 
@@ -33,7 +35,11 @@ function browserSyncInit(baseDir, files, browser, baseFile) {
 
 }
 
-gulp.task('serve', ['watch'], function () {
+gulp.task('serve', function (done) {
+  runSequence(['setConfig:dev', 'watch', 'serve:dev'], done);
+});
+
+gulp.task('serve:dev', function(){
   browserSyncInit([
     'assets/src'
   ], [
