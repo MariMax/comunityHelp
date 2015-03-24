@@ -35,6 +35,11 @@ module.exports.policies = {
 
   'settings': {
     '*': true
+  },
+
+  'EventController':{
+    'subscribe':true,
+    'count':true
   }
 
   /***************************************************************************

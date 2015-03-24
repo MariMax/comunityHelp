@@ -6,4 +6,5 @@ angular.module('homeModule')
       authUserService.getUser().then(function(user){
           scope.user = user;
       });
+
     });
