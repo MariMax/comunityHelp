@@ -3,28 +3,32 @@
 angular.module('eventsModule').factory('eventsDataService', function (eventsBackEnd, socket, $q) {
   var events = [];
   var count = {count:0};
-  socket.subscribeModel('/event/subscribe', 'event', function (msg) {
-    switch (msg.verb) {
-      case 'created':
-        eventsBackEnd.get(msg.id).then(function (resp) {
-          events.push(resp.data);
-          count.count+=1;
-        });
-        break;
-      case 'updated':
-        eventsBackEnd.get(msg.id).then(function (resp) {
-          var el = _.find(events, {id:msg.id});
-          var index = _.indexOf(events, el);
-          events[index] = resp.data;
-        });
-        break;
-      case 'destroyed':
-        _.remove(events, {id:msg.id});
-        break;
-      default:
-        return;
-    }
-  });
+
+  function subscribe() {
+    socket.subscribeModel('/event/subscribe', 'event', function (msg) {
+      switch (msg.verb) {
+        case 'created':
+          eventsBackEnd.get(msg.id).then(function (resp) {
+            events.push(resp.data);
+            count.count += 1;
+          });
+          break;
+        case 'updated':
+          eventsBackEnd.get(msg.id).then(function (resp) {
+            var el = _.find(events, {id: msg.id});
+            var index = _.indexOf(events, el);
+            events[index] = resp.data;
+          });
+          break;
+        case 'destroyed':
+          _.remove(events, {id: msg.id});
+          count.count -= 1;
+          break;
+        default:
+          return;
+      }
+    });
+  }
 
   function getEvents(){
     var defer = $q.defer();
@@ -45,6 +49,7 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
   }
 
   return {
+    subscribe:subscribe,
     getEvents: getEvents,
     getEventsCount: function (init) {
       var defer = $q.defer();
@@ -65,6 +70,20 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
     },
     removeEvent: function (eventId) {
       return eventsBackEnd.remove(eventId);
+    },
+    get:function(eventId){
+      var defer = $q.defer();
+      var el = _.find(events, {id:eventId});
+      if (el){
+        defer.resolve(el);
+      } else {
+        eventsBackEnd.get(eventId).then(function(resp){
+          defer.redolve(resp.data);
+        }, function () {
+          defer.reject();
+        });
+      }
+      return defer.promise;
     }
   };
 });

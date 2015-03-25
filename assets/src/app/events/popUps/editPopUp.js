@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q) {
-  function ctrl($scope, $modalInstance, event, FileUploader, baseUrl, eventsBackEnd){
+angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q, $timeout) {
+  function ctrl($scope, $modalInstance, event, FileUploader, baseUrl, eventsDataService){
     var scope = $scope;
     scope.spinner = false;
 
@@ -12,12 +12,20 @@ angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q) {
       removeAfterUpload:true
     });
 
+    scope.getWysywig = function(){
+      var description = document.getElementById('wysiwyg');
+      if (!description){
+        $timeout(scope.getWysywig, 100);
+        return;
+      }
+      angular.element(description).html(scope.event.description);
+    };
+
     if (event){
       scope.header = 'Edit event';
-      eventsBackEnd.get(event).then(function(resp){
-        scope.event = resp.data;
-        var description = document.getElementById('wysiwyg');
-        angular.element(description).html(scope.event.description);
+      eventsDataService.get(event).then(function(event){
+        scope.event = event;
+        $timeout(scope.getWysywig, 100);
       });
     } else {
       scope.header = 'Create event';
@@ -29,7 +37,7 @@ angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q) {
     };
 
     scope.saveHandler = function(){
-      eventsBackEnd.save(scope.event).then(function(){
+      eventsDataService.saveEvent(scope.event).then(function(){
         $modalInstance.close();
       }, function(){
         scope.spinner = false;

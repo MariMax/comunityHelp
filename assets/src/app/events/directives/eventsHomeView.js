@@ -7,7 +7,7 @@ angular.module('eventsModule').directive('eventsHomeView', function(eventsDataSe
     link:function($scope){
       var scope = $scope;
       eventsDataService.getEventsCount(true).then(function(data){
-        scope.count = data.count;
+        scope.data = data;
       });
     },
     templateUrl:'app/events/views/eventsHomeView.html'
