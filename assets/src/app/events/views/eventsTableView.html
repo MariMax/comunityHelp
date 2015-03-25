@@ -1,0 +1,29 @@
+<div class="panel panel-default col-xs-12">
+  <div class="panel-heading">
+    Events
+    <a href="" ng-click="create()" class="btn btn-xs btn-default pull-right">Add new event</a>
+  </div>
+  <div class="table-responsive col-xs-12">
+    <table class="table table-striped b-t b-light">
+      <thead>
+      <tr>
+        <th>Header</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th style="width:30px;">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="event in events">
+        <td ng-bind="event.header"></td>
+        <td class="col-xs-2"><img class="col-xs-12" ng-src="{{event.image}}" alt=""/></td>
+        <td ng-bind-html="event.description"></td>
+        <td>
+          <a href="" ng-click="edit(event.id)"><i class="fa fa-pencil-square-o text-success"></i></a>
+          <a href="" ng-click="remove(event.id)"><i class="fa fa-times text-danger"></i></a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

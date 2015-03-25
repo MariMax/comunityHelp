@@ -45,33 +45,7 @@ angular.module('adminModule').config(function ($stateProvider) {
     })
     .state('admin.actionPanel.events', {
       url: '/events',
-      templateUrl: 'app/admin/views/actionEvents.html',
-      controller: 'EventsActionsController',
-      resolve:{
-        events:function(adminBackEnd){
-          return adminBackEnd.events.getList();
-        }
-      }
-    })
-    .state('admin.actionPanel.events.new',{
-      url:'/new',
-      controller:'EditController',
-      templateUrl: 'app/admin/views/editEvent.html',
-      resolve:{
-        event:function(){
-          return null;
-        }
-      }
-    })
-    .state('admin.actionPanel.events.edit',{
-      url:'/edit/:id',
-      controller:'EditController',
-      templateUrl: 'app/admin/views/editEvent.html',
-      resolve:{
-        event:function(adminBackEnd, $stateParams){
-          return adminBackEnd.events.get($stateParams.id);
-        }
-      }
+      templateUrl: 'app/admin/views/eventsTableView.html'
     })
     .state('admin.actionPanel.profile', {
       url: '/profile',

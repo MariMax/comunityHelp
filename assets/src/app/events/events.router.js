@@ -28,8 +28,8 @@ angular.module('eventsModule').config(function ($stateProvider) {
 
           return defer.promise;
         },
-        events:function(adminBackEnd){
-          return adminBackEnd.events.getList();
+        events:function(eventsBackEnd){
+          return eventsBackEnd.getList();
         }
       }
     });

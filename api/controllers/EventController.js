@@ -10,14 +10,18 @@ module.exports = {
     if (req.body.id){
       Event.update({id:req.body.id}, req.body, function(err, event){
         if (!err) {
-          Event.publishUpdate(req.body.id);
+          console.log('update',req.body.id );
+          sails.sockets.blast('event', {id:req.body.id, verb:'updated'});
+          //Event.message(req.body.id, {verb:'updated'});
         }
         response(res, err, event);
       })
     } else {
       Event.create(req.body, function (err, event) {
         if (!err) {
-          Event.publishCreate(event.id);
+          console.log('create',event.id );
+          sails.sockets.blast('event', {id:event.id, verb:'created'});
+          //Event.publishCreate({id:event.id});
         }
         response(res, err, event);
       });
@@ -46,7 +50,9 @@ module.exports = {
       if (err) {
         res.send(500);
       } else {
-        Event.publishDestroy(req.body.id);
+        console.log('destroy',req.body.id );
+        sails.sockets.blast('event', {id:req.body.id, verb:'destroyed'});
+        //Event.message(req.body.id, {verb:'destroyed'});
         res.send(events);
       }
     });

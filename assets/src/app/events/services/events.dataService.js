@@ -13,7 +13,8 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
         break;
       case 'updated':
         eventsBackEnd.get(msg.id).then(function (resp) {
-          var index = _.indexOf(events, {id:msg.id});
+          var el = _.find(events, {id:msg.id});
+          var index = _.indexOf(events, el);
           events[index] = resp.data;
         });
         break;

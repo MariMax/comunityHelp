@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('eventsModule',[]);
+angular.module('eventsModule',['authModule','ui.router','sailsApp.config','socketModule']);

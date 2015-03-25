@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('adminModule')
-  .controller('EditController', function($scope, $state, FileUploader, baseUrl, adminBackEnd, event) {
+angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q) {
+  function ctrl($scope, $modalInstance, event, FileUploader, baseUrl, eventsBackEnd){
     var scope = $scope;
+    scope.spinner = false;
+
 
     var uploader = scope.uploader = new FileUploader({
       url: baseUrl+'/file/upload',
@@ -12,21 +14,23 @@ angular.module('adminModule')
 
     if (event){
       scope.header = 'Edit event';
-      scope.event = event.data;// event;
-      var description = document.getElementById('wysiwyg');
-      angular.element(description).html(scope.event.description);
+      eventsBackEnd.get(event).then(function(resp){
+        scope.event = resp.data;
+        var description = document.getElementById('wysiwyg');
+        angular.element(description).html(scope.event.description);
+      });
     } else {
       scope.header = 'Create event';
       scope.event = {};
     }
 
     scope.cancel = function(){
-      $state.go('admin.actionPanel.events');
+      $modalInstance.dismiss('cancel');
     };
 
     scope.saveHandler = function(){
-      adminBackEnd.events.save(scope.event).then(function(){
-        $state.go('admin.actionPanel.events');
+      eventsBackEnd.save(scope.event).then(function(){
+        $modalInstance.close();
       }, function(){
         scope.spinner = false;
         scope.eventError = 'Cannot save event, please try again later';
@@ -58,4 +62,29 @@ angular.module('adminModule')
       console.info('onErrorItem', fileItem, response, status, headers);
       scope.fileError = 'Cannot upload file, please try again later';
     };
-  });
+  }
+
+  return {
+    open: function(item) {
+      var defer = $q.defer();
+      var modalInstance = $modal.open({
+        templateUrl: 'app/events/views/popUps/editPopUp.html',
+        controller: ctrl,
+        size: 'lg',
+        resolve: {
+          event: function() {
+            return item;
+          }
+        }
+      });
+
+      modalInstance.result.then(function() {
+        defer.resolve();
+      }, function() {
+        defer.reject();
+      });
+
+      return defer.promise;
+    }
+  };
+});

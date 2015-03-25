@@ -18,16 +18,16 @@
 
     <!-- build:css({.tmp,assets/src}) styles/app.css -->
     <!-- inject:userCss -->
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
-    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="assets/jquery/chosen/chosen.css">
     <link rel="stylesheet" href="assets/jquery/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2.css">
-    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <link rel="stylesheet" href="assets/jquery/slider/slider.css">
     <link rel="stylesheet" href="assets/jquery/spinner/jquery.bootstrap-touchspin.css">
     <!-- endinject -->
@@ -71,23 +71,23 @@
 
     <script src="assets/jquery/spinner/jquery.bootstrap-touchspin.min.js"></script>
 
-    <script src="assets/jquery/slimscroll/jquery.slimscroll.min.js"></script>
-
     <script src="assets/jquery/sortable/jquery.sortable.js"></script>
+
+    <script src="assets/jquery/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/jquery/slider/bootstrap-slider.js"></script>
 
     <script src="assets/jquery/select2/select2.min.js"></script>
-
-    <script src="assets/jquery/nestable/jquery.nestable.js"></script>
-
-    <script src="assets/jquery/file/bootstrap-filestyle.min.js"></script>
 
     <script src="assets/jquery/jvectormap/jquery-jvectormap.min.js"></script>
 
     <script src="assets/jquery/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 
     <script src="assets/jquery/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+
+    <script src="assets/jquery/nestable/jquery.nestable.js"></script>
+
+    <script src="assets/jquery/file/bootstrap-filestyle.min.js"></script>
 
     <script src="assets/jquery/datatables/jquery.dataTables.min.js"></script>
 
@@ -111,15 +111,23 @@
 
     <script src="app/events/services/events.dataService.js"></script>
 
+    <script src="app/events/popUps/editPopUp.js"></script>
+
+    <script src="app/events/directives/eventsTableView.js"></script>
+
     <script src="app/events/directives/eventsHomeView.js"></script>
 
     <script src="app/events/controllers/list.controller.js"></script>
 
-    <script src="app/common/commonModule.js"></script>
+    <script src="app/admin/admin.module.js"></script>
 
-    <script src="app/common/services/localStorage.js"></script>
+    <script src="app/auth/services/auth.userService.js"></script>
 
     <script src="app/auth/auth.module.js"></script>
+
+    <script src="app/auth/services/auth.BackEnd.js"></script>
+
+    <script src="app/auth/services/auth.Actions.js"></script>
 
     <script src="app/auth/controllers/SignUp.Controller.js"></script>
 
@@ -127,13 +135,9 @@
 
     <script src="app/auth/controllers/Forgot.Controller.js"></script>
 
-    <script src="app/admin/admin.module.js"></script>
+    <script src="app/common/commonModule.js"></script>
 
-    <script src="app/auth/services/auth.userService.js"></script>
-
-    <script src="app/auth/services/auth.BackEnd.js"></script>
-
-    <script src="app/auth/services/auth.Actions.js"></script>
+    <script src="app/common/services/localStorage.js"></script>
 
     <script src="app/admin/directives/mbAside.js"></script>
 
@@ -141,13 +145,9 @@
 
     <script src="app/admin/directives/asideFooter.js"></script>
 
-    <script src="app/admin/controllers/events.edit.controller.js"></script>
-
     <script src="app/admin/controllers/UsersActions.Controller.js"></script>
 
     <script src="app/admin/controllers/ProfileActions.Controller.js"></script>
-
-    <script src="app/admin/controllers/EventsActions.Controller.js"></script>
 
     <script src="app/admin/controllers/Action.Controller.js"></script>
 
