@@ -8,9 +8,9 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
     socket.subscribeModel('/event/subscribe', 'event', function (msg) {
       switch (msg.verb) {
         case 'created':
+          count.count += 1;
           eventsBackEnd.get(msg.id).then(function (resp) {
             events.push(resp.data);
-            count.count += 1;
           });
           break;
         case 'updated':
