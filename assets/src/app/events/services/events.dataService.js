@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('eventsModule').factory('eventsDataService', function (eventsBackEnd, socket, $q) {
+angular.module('eventsModule').factory('eventsDataService', function (eventsBackEnd, socket, $q, $timeout) {
   var events = [];
   var count = {count:0};
 
@@ -22,7 +22,7 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
           break;
         case 'destroyed':
           _.remove(events, {id: msg.id});
-          count.count -= 1;
+          $timeout(function(){count.count -= 1;});
           break;
         default:
           return;
