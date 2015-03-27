@@ -18,13 +18,13 @@ gulp.task('scripts', function() {
 
 gulp.task('setConfig:dev',['removeConfig'], function(){
   gulp.src('devConfig.json')
-    .pipe(gulpNgConfig('sailsApp.config'))
+    .pipe(gulpNgConfig('configModule'))
     .pipe(gulp.dest('assets/src/app/config'))
 });
 
 gulp.task('setConfig:dist',['removeConfig'], function(){
   gulp.src('distConfig.json')
-    .pipe(gulpNgConfig('sailsApp.config'))
+    .pipe(gulpNgConfig('configModule'))
     .pipe(gulp.dest('assets/src/app/config'))
 });
 

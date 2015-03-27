@@ -43,13 +43,18 @@ module.exports.routes = {
   'get /auth/checkAuth': {controller:'AuthController', action:'checkAuth', cors:true},
 
   'get /settings': {controller:'SettingsController', action:'get', cors:true},
+
   'post /file/upload':{controller:'FileController', action:'s3upload', cors:true},
+
   'post /event/save':{controller:'EventController', action:'save', cors:true},
   'get /event/getList':{controller:'EventController', action:'getList', cors:true},
   'get /event/count':{controller:'EventController', action:'count', cors:true},
   'get /event/subscribe':{controller:'EventController', action:'subscribe', cors:true},
   'post /event/get':{controller:'EventController', action:'get', cors:true},
-  'post /event/delete':{controller:'EventController', action:'remove', cors:true}
+  'post /event/delete':{controller:'EventController', action:'remove', cors:true},
+
+  'post /user/get':{controller:'UserController', action:'get', cors:true},
+  'post /user/update':{controller:'UserController', action:'update', cors:true}
   // 'get /auth/:provider': 'AuthController.provider',
   // 'get /auth/:provider/callback': 'AuthController.callback',
   // 'get /auth/:provider/:action': 'AuthController.callback',

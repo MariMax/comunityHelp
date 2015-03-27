@@ -4,8 +4,8 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
   var events = [];
   var count = {count:0};
 
-  function subscribe() {
-    socket.subscribeModel('/event/subscribe', 'event', function (msg) {
+
+    socket.subscribeModel('event', function (msg) {
       switch (msg.verb) {
         case 'created':
           count.count += 1;
@@ -28,7 +28,7 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
           return;
       }
     });
-  }
+
 
   function getEvents(){
     var defer = $q.defer();
@@ -49,7 +49,6 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
   }
 
   return {
-    subscribe:subscribe,
     getEvents: getEvents,
     getEventsCount: function (init) {
       var defer = $q.defer();

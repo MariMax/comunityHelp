@@ -69,7 +69,6 @@ module.exports = {
   },
   subscribe:function(req, res){
     if (req.isSocket){
-      Event.watch(req);
       console.log('User with socket id '+sails.sockets.id(req)+' is now subscribed to the model class \'Event\'.');
     }
     res.send(200);

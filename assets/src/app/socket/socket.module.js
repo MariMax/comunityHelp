@@ -4,17 +4,17 @@ angular.module('socketModule',[]).factory('socket', function(baseUrl){
  var socket = {};
   var sumscribedModels = [];
 
+  if (!socket.get){
+    socket = io.sails.connect(baseUrl);
+  }
+
   return {
-    subscribeEvent:function(){
-    },
-    subscribeModel:function(url, model, callback){
+    subscribeModel:function(model, callback){
       if (_.include(sumscribedModels, model)) {
         return;
       }
-      if (!socket.get){
-        socket = io.sails.connect(baseUrl);
-      }
-      socket.get(baseUrl+url);
+
+      //socket.get(baseUrl+url);
       socket.on(model, callback);
       sumscribedModels.push(model);
     }

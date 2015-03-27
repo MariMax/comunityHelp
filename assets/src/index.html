@@ -18,18 +18,18 @@
 
     <!-- build:css({.tmp,assets/src}) styles/app.css -->
     <!-- inject:userCss -->
-    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="assets/jquery/chosen/chosen.css">
     <link rel="stylesheet" href="assets/jquery/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2.css">
     <link rel="stylesheet" href="assets/jquery/slider/slider.css">
     <link rel="stylesheet" href="assets/jquery/spinner/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <!-- endinject -->
     <!-- endbuild -->
 </head>
@@ -69,17 +69,17 @@
 
     <script src="assets/jquery/wysiwyg/bootstrap-wysiwyg.js"></script>
 
-    <script src="assets/jquery/sortable/jquery.sortable.js"></script>
-
     <script src="assets/jquery/spinner/jquery.bootstrap-touchspin.min.js"></script>
 
+    <script src="assets/jquery/sortable/jquery.sortable.js"></script>
+
     <script src="assets/jquery/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="assets/jquery/select2/select2.min.js"></script>
 
     <script src="assets/jquery/slider/bootstrap-slider.js"></script>
 
     <script src="assets/jquery/nestable/jquery.nestable.js"></script>
-
-    <script src="assets/jquery/select2/select2.min.js"></script>
 
     <script src="assets/jquery/jvectormap/jquery-jvectormap.min.js"></script>
 
@@ -89,11 +89,19 @@
 
     <script src="assets/jquery/file/bootstrap-filestyle.min.js"></script>
 
-    <script src="assets/jquery/chosen/chosen.jquery.min.js"></script>
-
     <script src="assets/jquery/datatables/jquery.dataTables.min.js"></script>
 
     <script src="assets/jquery/datatables/dataTables.bootstrap.js"></script>
+
+    <script src="assets/jquery/chosen/chosen.jquery.min.js"></script>
+
+    <script src="app/users/userModule.js"></script>
+
+    <script src="app/users/services/user.dataService.js"></script>
+
+    <script src="app/users/services/user.backEnd.js"></script>
+
+    <script src="app/users/directives/userWidget.js"></script>
 
     <script src="app/permission/permission.module.js"></script>
 
@@ -105,10 +113,6 @@
 
     <script src="app/home/controllers/home.controller.js"></script>
 
-    <script src="app/common/commonModule.js"></script>
-
-    <script src="app/common/services/localStorage.js"></script>
-
     <script src="app/events/events.module.js"></script>
 
     <script src="app/events/services/eventsBackEnd.js"></script>
@@ -117,11 +121,11 @@
 
     <script src="app/events/popUps/editPopUp.js"></script>
 
-    <script src="app/events/controllers/list.controller.js"></script>
-
     <script src="app/events/directives/eventsTableView.js"></script>
 
     <script src="app/events/directives/eventsHomeView.js"></script>
+
+    <script src="app/events/controllers/list.controller.js"></script>
 
     <script src="app/admin/admin.module.js"></script>
 
@@ -139,6 +143,10 @@
 
     <script src="app/auth/controllers/Forgot.Controller.js"></script>
 
+    <script src="app/common/commonModule.js"></script>
+
+    <script src="app/common/services/localStorage.js"></script>
+
     <script src="app/admin/directives/mbAside.js"></script>
 
     <script src="app/admin/directives/header.js"></script>
@@ -151,19 +159,19 @@
 
     <script src="app/admin/controllers/Action.Controller.js"></script>
 
+    <script src="assets/js/sails.io.js"></script>
+
     <script src="assets/jquery/jquery-ui-1.10.3.custom.min.js"></script>
 
     <script src="assets/jquery/bootstrap.js"></script>
-
-    <script src="assets/js/sails.io.js"></script>
 
     <script src="app/socket/socket.module.js"></script>
 
     <script src="app/home/home.router.js"></script>
 
-    <script src="app/config/devConfig.js"></script>
-
     <script src="app/events/events.router.js"></script>
+
+    <script src="app/config/devConfig.js"></script>
 
     <script src="app/auth/auth.router.js"></script>
 

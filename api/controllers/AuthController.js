@@ -8,9 +8,10 @@ var passService = require('../services/password');
  * the basics of Passport.js to work.
  */
 var AuthController = {
- 
+
   logout: function (req, res) {
     req.logout();
+    sails.sockets.blast('user', {id: user.id, verb: 'loggedOut'});
     res.status(200).send();
   },
 
@@ -34,10 +35,10 @@ var AuthController = {
   },
 
   provider: function (req, res) {
-    passport.endpoint(req, res); 
+    passport.endpoint(req, res);
   },
 
- 
+
   callback: function (req, res) {
     function checkErrors (err) {
 
@@ -65,6 +66,7 @@ var AuthController = {
           return checkErrors(err);
         }
 
+        sails.sockets.blast('user', {id: user.id, verb: 'loggedIn'});
         res.status(200).jsonx(user);
       });
     });
