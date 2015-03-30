@@ -4,32 +4,6 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
   var events = [];
   var count = {count:0};
 
-
-    socket.subscribeModel('event', function (msg) {
-      switch (msg.verb) {
-        case 'created':
-          count.count += 1;
-          eventsBackEnd.get(msg.id).then(function (resp) {
-            events.push(resp.data);
-          });
-          break;
-        case 'updated':
-          eventsBackEnd.get(msg.id).then(function (resp) {
-            var el = _.find(events, {id: msg.id});
-            var index = _.indexOf(events, el);
-            events[index] = resp.data;
-          });
-          break;
-        case 'destroyed':
-          _.remove(events, {id: msg.id});
-          $timeout(function(){count.count -= 1;});
-          break;
-        default:
-          return;
-      }
-    });
-
-
   function getEvents(){
     var defer = $q.defer();
 
@@ -83,6 +57,31 @@ angular.module('eventsModule').factory('eventsDataService', function (eventsBack
         });
       }
       return defer.promise;
+    },
+    subscribe:function(){
+      socket.subscribeModel('event', function (msg) {
+        switch (msg.verb) {
+          case 'created':
+            count.count += 1;
+            eventsBackEnd.get(msg.id).then(function (resp) {
+              events.push(resp.data);
+            });
+            break;
+          case 'updated':
+            eventsBackEnd.get(msg.id).then(function (resp) {
+              var el = _.find(events, {id: msg.id});
+              var index = _.indexOf(events, el);
+              events[index] = resp.data;
+            });
+            break;
+          case 'destroyed':
+            _.remove(events, {id: msg.id});
+            $timeout(function(){count.count -= 1;});
+            break;
+          default:
+            return;
+        }
+      });
     }
   };
 });

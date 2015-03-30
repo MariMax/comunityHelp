@@ -1,26 +1,7 @@
 'use strict';
 
-angular.module('userModule').factory('userDataService', function (userBackEnd, socket, $q, authUserService) {
+angular.module('userModule').factory('userDataService', function (userBackEnd, socket, $q, authUserService, $timeout, $state) {
   var users = [];
-
-  socket.subscribeModel('user', function (msg) {
-    switch (msg.verb) {
-      case 'updated':
-          authUserService.getUser().then(function(user){
-            if (user.id === msg.id){
-              userBackEnd.getUser(user.id).then(function(userFromBase){
-                user.name = userFromBase.name;
-                user.lastName = userFromBase.lastName;
-                user.admin = userFromBase.admin;
-                authUserService.setUser(user);
-              });
-            }
-          });
-        break;
-      default:
-        return;
-    }
-  });
 
   return {
     getUsers:function(init){
@@ -41,6 +22,29 @@ angular.module('userModule').factory('userDataService', function (userBackEnd, s
     },
     updateUser:function(user){
       userBackEnd.update(user);
+    },
+    subscribe:function(){
+      socket.subscribeModel('user', function (msg) {
+        switch (msg.verb) {
+          case 'updated':
+            authUserService.getUser().then(function(user){
+              if (user.id === msg.id){
+                userBackEnd.getUser(user.id).then(function(userFromBase){
+                  user.name = userFromBase[0].name;
+                  user.lastName = userFromBase[0].lastName;
+                  user.admin = userFromBase[0].admin;
+                  $timeout(function(){authUserService.setUser(user);});
+                  if (!user.admin){
+                    $state.go('home');
+                  }
+                });
+              }
+            });
+            break;
+          default:
+            return;
+        }
+      });
     }
   };
 });

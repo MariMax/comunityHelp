@@ -13,23 +13,24 @@
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css({.tmp,assets/src}) styles/app.css -->
     <!-- inject:userCss -->
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
-    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="assets/jquery/chosen/chosen.css">
     <link rel="stylesheet" href="assets/jquery/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2-bootstrap.css">
     <link rel="stylesheet" href="assets/jquery/select2/select2.css">
     <link rel="stylesheet" href="assets/jquery/slider/slider.css">
     <link rel="stylesheet" href="assets/jquery/spinner/jquery.bootstrap-touchspin.css">
-    <link rel="stylesheet" href="assets/jquery/nestable/nestable.css">
     <!-- endinject -->
     <!-- endbuild -->
 </head>
@@ -56,14 +57,15 @@
     <script src="bower_components/bootstrap-filestyle/src/bootstrap-filestyle.js"></script>
     <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,assets/src}) scripts/app.js -->
     <!-- inject:userJS -->
 
-    <script src="assets/jquery/charts/sparkline/jquery.sparkline.min.js"></script>
-
     <script src="assets/jquery/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+
+    <script src="assets/jquery/charts/sparkline/jquery.sparkline.min.js"></script>
 
     <script src="assets/jquery/wysiwyg/jquery.hotkeys.js"></script>
 
@@ -75,9 +77,9 @@
 
     <script src="assets/jquery/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <script src="assets/jquery/select2/select2.min.js"></script>
-
     <script src="assets/jquery/slider/bootstrap-slider.js"></script>
+
+    <script src="assets/jquery/select2/select2.min.js"></script>
 
     <script src="assets/jquery/nestable/jquery.nestable.js"></script>
 
@@ -127,6 +129,12 @@
 
     <script src="app/events/controllers/list.controller.js"></script>
 
+    <script src="app/common/commonModule.js"></script>
+
+    <script src="app/common/derectives/inPlaceCheckbox.js"></script>
+
+    <script src="app/common/services/localStorage.js"></script>
+
     <script src="app/admin/admin.module.js"></script>
 
     <script src="app/auth/services/auth.userService.js"></script>
@@ -142,10 +150,6 @@
     <script src="app/auth/controllers/SignIn.controller.js"></script>
 
     <script src="app/auth/controllers/Forgot.Controller.js"></script>
-
-    <script src="app/common/commonModule.js"></script>
-
-    <script src="app/common/services/localStorage.js"></script>
 
     <script src="app/admin/directives/mbAside.js"></script>
 

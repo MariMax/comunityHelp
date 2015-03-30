@@ -10,8 +10,8 @@ var passService = require('../services/password');
 var AuthController = {
 
   logout: function (req, res) {
+    sails.sockets.blast('user', {id: req.user.id, verb: 'loggedOut'});
     req.logout();
-    sails.sockets.blast('user', {id: user.id, verb: 'loggedOut'});
     res.status(200).send();
   },
 

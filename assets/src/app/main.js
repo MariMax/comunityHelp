@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sailsApp', ['ui.router', 'homeModule', 'adminModule', 'authModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'permissionModule', 'socketModule', 'ui.jq', 'angularFileUpload', 'ngSanitize', 'commonModule', 'configModule'])
+angular.module('sailsApp', ['ui.router', 'homeModule', 'adminModule', 'authModule', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'permissionModule', 'socketModule', 'ui.jq', 'angularFileUpload', 'ngSanitize', 'commonModule', 'configModule', 'xeditable'])
   .config(function ($urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.withCredentials = true;
     $urlRouterProvider.otherwise('/');
@@ -83,8 +83,9 @@ angular.module('sailsApp')
   });
 
 
-angular.module('sailsApp').run(function () {
-
+angular.module('sailsApp').run(function (editableOptions, editableThemes) {
+  editableOptions.theme = 'bs3';
+  editableThemes.bs3.buttonsClass = 'btn-sm';
   // $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
   //   if (error === 'AUTH_REQUIRED') {
   //     $state.go('home');

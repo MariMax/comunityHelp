@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('socketModule',[]).factory('socket', function(baseUrl){
+angular.module('socketModule',[]).factory('socket', function(baseUrl,subscription){
  var socket = {};
   var sumscribedModels = [];
 
   if (!socket.get){
     socket = io.sails.connect(baseUrl);
   }
+
+  socket.get(baseUrl+subscription);
 
   return {
     subscribeModel:function(model, callback){

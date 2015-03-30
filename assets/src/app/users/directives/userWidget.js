@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('userModule').directive('userWidget',function(userDataService){
+angular.module('userModule').directive('userWidget',function(userDataService, authUserService){
   return {
     restrict: 'E',
     replace:true,
@@ -10,6 +10,14 @@ angular.module('userModule').directive('userWidget',function(userDataService){
       userDataService.getUsers(true).then(function(users){
         scope.users = users;
       });
+
+      authUserService.getUser().then(function(me){
+        scope.me = me;
+      });
+
+      scope.submit = function(user){
+        userDataService.updateUser(user);
+      };
     }
   };
 });
