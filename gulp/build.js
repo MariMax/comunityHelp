@@ -108,7 +108,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('misc', function() {
-    return gulp.src('assets/src/**/*.ico')
+    return gulp.src('assets/*.*')
         .pipe(gulp.dest('.tmp/public'))
         .pipe($.size());
 });

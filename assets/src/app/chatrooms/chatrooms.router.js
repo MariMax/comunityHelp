@@ -28,7 +28,7 @@ angular.module('chatroomsModule').config(function ($stateProvider) {
 
           return defer.promise;
         },
-        chatrooms:function(chatroomsBackEnd){
+        chatrooms:function(chatroomsBackEnd, authUserService){
           return authUserService.getUser().then(function(user) {
             return chatroomsBackEnd.getList(user);
           });
