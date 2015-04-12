@@ -4,12 +4,31 @@
   <div class="bg-light lter b-b wrapper-md ng-scope">
     <h1 class="m-n font-thin h3">Chatrooms</h1>
   </div>
-  <div class="wrapper-md ng-scope">
+  <div class="wrapper-md">
     <div class="row">
       <div class="col-sm-12">
+          <div class="list-group list-group-lg list-group-sp">
+            <a ui-sref="chats.item({id:chatRoom.id})" class="list-group-item clearfix" ng-repeat="chatRoom in chatRooms">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img ng-src="{{chatRoom.lastMessage.user.avatar}}" alt="..." ng-if="chatRoom.messages.length">
+                <!--<i class="on b-white right"></i>-->
+              </span>
+              <span class="clear">
+                <span>{{chatRoom.lastMessage.user.name + ' ' +chatRoom.lastMessage.user.lastName}}</span>
+                <span class="pull-right label bg-primary inline m-t-sm" ng-bind="chatRoom.messages.length"></span>
+                <small class="text-muted clear text-ellipsis" ng-bind="chatRoom.lastMessage.message" ng-if="chatRoom.messages.length"></small>
 
+              </span>
 
+            </a>
+          </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- navbar -->
+<div class="app-footer wrapper navbar navbar-fixed-bottom bg-light lt b-t m-n">
+  <button class="btn btn-sm btn-primary btn-addon" ng-click="newChat()"><i class="fa fa-plus"></i>Start new dialog</button>
+</div>
+<!-- /navbar -->

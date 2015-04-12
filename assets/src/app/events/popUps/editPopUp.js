@@ -76,7 +76,7 @@ angular.module('eventsModule').factory('eventEditPopUp',function ($modal, $q, $t
     open: function(item) {
       var defer = $q.defer();
       var modalInstance = $modal.open({
-        templateUrl: 'app/events/views/popUps/editPopUp.html',
+        templateUrl: 'app/events/views/popUps/newPopUp.html',
         controller: ctrl,
         size: 'lg',
         resolve: {

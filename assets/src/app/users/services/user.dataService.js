@@ -23,6 +23,20 @@ angular.module('userModule').factory('userDataService', function (userBackEnd, s
     updateUser:function(user){
       userBackEnd.update(user);
     },
+    getUserByEmail:function(val){
+      var defer = $q.defer();
+      var userCollection = _.filter(users, function(user){
+        return user.email.indexOf(val) > -1;
+      });
+      if (userCollection.length){
+        defer.resolve(userCollection);
+      } else {
+        userBackEnd.getUserByEmail(val).then(function(userCollection){
+          defer.resolve(userCollection);
+        });
+      }
+      return defer.promise;
+    },
     subscribe:function(){
       socket.subscribeModel('user', function (msg) {
         switch (msg.verb) {

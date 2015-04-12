@@ -37,6 +37,7 @@
     <!-- inject:userCss -->
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/customImprovements.css">
     <link rel="stylesheet" href="styles/font.css">
     <link rel="stylesheet" href="styles/simple-line-icons.css">
     <link rel="stylesheet" href="assets/jquery/chosen/chosen.css">
@@ -79,9 +80,9 @@
     <!-- build:js({.tmp,assets/src}) scripts/app.js -->
     <!-- inject:userJS -->
 
-    <script src="assets/jquery/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-
     <script src="assets/jquery/charts/sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="assets/jquery/charts/easypiechart/jquery.easy-pie-chart.js"></script>
 
     <script src="assets/jquery/wysiwyg/jquery.hotkeys.js"></script>
 
@@ -93,11 +94,11 @@
 
     <script src="assets/jquery/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <script src="assets/jquery/nestable/jquery.nestable.js"></script>
-
     <script src="assets/jquery/slider/bootstrap-slider.js"></script>
 
     <script src="assets/jquery/select2/select2.min.js"></script>
+
+    <script src="assets/jquery/nestable/jquery.nestable.js"></script>
 
     <script src="assets/jquery/jvectormap/jquery-jvectormap.min.js"></script>
 
@@ -139,25 +140,29 @@
 
     <script src="app/events/popUps/editPopUp.js"></script>
 
+    <script src="app/events/controllers/list.controller.js"></script>
+
     <script src="app/events/directives/eventsTableView.js"></script>
 
     <script src="app/events/directives/eventsHomeView.js"></script>
 
-    <script src="app/events/controllers/list.controller.js"></script>
-
     <script src="app/common/commonModule.js"></script>
-
-    <script src="app/common/services/localStorage.js"></script>
 
     <script src="app/common/derectives/inPlaceCheckbox.js"></script>
 
+    <script src="app/common/services/localStorage.js"></script>
+
     <script src="app/chatrooms/chatrooms.module.js"></script>
+
+    <script src="app/chatrooms/popUps/newPopUp.js"></script>
 
     <script src="app/chatrooms/services/chatroomsBackEnd.js"></script>
 
     <script src="app/chatrooms/services/chatrooms.dataService.js"></script>
 
     <script src="app/chatrooms/directives/chatroomsHomeView.js"></script>
+
+    <script src="app/chatrooms/controllers/chatItem.controller.js"></script>
 
     <script src="app/chatrooms/controllers/chat.controller.js"></script>
 
@@ -177,17 +182,17 @@
 
     <script src="app/auth/controllers/Forgot.Controller.js"></script>
 
-    <script src="app/admin/controllers/UsersActions.Controller.js"></script>
-
-    <script src="app/admin/controllers/ProfileActions.Controller.js"></script>
-
-    <script src="app/admin/controllers/Action.Controller.js"></script>
-
     <script src="app/admin/directives/mbAside.js"></script>
 
     <script src="app/admin/directives/header.js"></script>
 
     <script src="app/admin/directives/asideFooter.js"></script>
+
+    <script src="app/admin/controllers/UsersActions.Controller.js"></script>
+
+    <script src="app/admin/controllers/ProfileActions.Controller.js"></script>
+
+    <script src="app/admin/controllers/Action.Controller.js"></script>
 
     <script src="assets/js/sails.io.js"></script>
 
@@ -201,7 +206,7 @@
 
     <script src="app/events/events.router.js"></script>
 
-    <script src="app/config/distConfig.js"></script>
+    <script src="app/config/devConfig.js"></script>
 
     <script src="app/chatrooms/chatrooms.router.js"></script>
 

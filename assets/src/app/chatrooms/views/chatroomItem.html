@@ -1,0 +1,36 @@
+<div class="app-header navbar" ng-include="'app/home/views/mainHeader.html'">
+</div>
+<div class="fade-in-down ng-scope">
+  <div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">Dialog</h1>
+  </div>
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-sm-12">
+          <div class="list-group list-group-lg list-group-sp">
+            <a herf="" class="list-group-item clearfix" ng-repeat="message in chatRoom.messages">
+              <span class="pull-left thumb-sm avatar m-r">
+                <img ng-src="{{message.user.avatar}}" alt="...">
+                <!--<i class="on b-white right"></i>-->
+              </span>
+              <span class="clear">
+                <span>{{message.user.name + ' ' +message.user.lastName}}</span>
+                <small class="text-muted clear text-ellipsis" ng-bind="message.message"></small>
+              </span>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- navbar -->
+<div class="app-footer wrapper navbar navbar-fixed-bottom bg-light lt b-t m-n">
+  <form class="form-inline ng-pristine ng-valid" role="form" name="messageForm">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter message" ng-model="message" required>
+    </div>
+    <button  type="submit" class="btn btn-info btn-addon pull-right" ng-click="send()" ng-disabled="messageForm.$invalid"><i class="fa fa-play" ng-if="!spinner"></i><i class="fa fa-spin fa-spinner" ng-if="spinner"></i> Send</button>
+  </form>
+</div>
+<!-- /navbar -->

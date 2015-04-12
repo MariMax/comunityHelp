@@ -54,7 +54,18 @@ module.exports.routes = {
   'post /event/delete':{controller:'EventController', action:'remove', cors:true},
 
   'post /user/get':{controller:'UserController', action:'get', cors:true},
-  'post /user/update':{controller:'UserController', action:'update', cors:true}
+  'post /user/update':{controller:'UserController', action:'update', cors:true},
+  'post /user/getByEmail':{controller:'UserController', action:'getByEmail', cors:true},
+
+  'post /chatrooms/getList': {controller:'ChatroomController', action:'getList', cors:true},
+  'post /chatrooms/get': {controller:'ChatroomController', action:'get', cors:true},
+  'post /chatrooms/invite': {controller:'ChatroomController', action:'invite', cors:true},
+  'post /chatrooms/leave': {controller:'ChatroomController', action:'leave', cors:true},
+  'post /chatrooms/new': {controller:'ChatroomController', action:'newChatRoom', cors:true},
+  'post /chatrooms/getFull': {controller:'ChatroomController', action:'getFull', cors:true},
+  'post /chatrooms/addMessage': {controller:'ChatroomController', action:'addMessage', cors:true},
+  'post /chatrooms/getMessage': {controller:'ChatroomController', action:'getMessage', cors:true}
+
   // 'get /auth/:provider': 'AuthController.provider',
   // 'get /auth/:provider/callback': 'AuthController.callback',
   // 'get /auth/:provider/:action': 'AuthController.callback',

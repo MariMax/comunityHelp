@@ -1,66 +1,93 @@
 'use strict';
 
-angular.module('chatroomsModule').factory('chatroomsDataService', function (eventsBackEnd, socket, $q, $timeout) {
-  var chatrooms = [];
-  var count = {count:0};
+angular.module('chatroomsModule').factory('chatroomsDataService', function (chatroomsBackEnd, socket, $q, $timeout, authUserService) {
+  var chatRooms = [];
 
   return {
     getList:   function (user){
       var defer = $q.defer();
 
-      if (chatrooms.length){
-        defer.resolve(chatrooms);
+      if (chatRooms.length){
+        defer.resolve(chatRooms);
       } else {
         chatroomsBackEnd.getList(user).then(function (resp) {
-          _.each(resp.data, function (event) {
-            chatrooms.push(event);
+          _.each(resp.data, function (chatRoom) {
+            chatRooms.push(chatRoom);
           });
-          defer.resolve(events);
+          defer.resolve(chatRooms);
         }, function () {
           defer.reject();
         });
       }
       return defer.promise;
     },
-    //saveEvent: function (event) {
-    //  return eventsBackEnd.save(event);
-    //},
-    //removeEvent: function (eventId) {
-    //  return eventsBackEnd.remove(eventId);
-    //},
-    //get:function(eventId){
-    //  var defer = $q.defer();
-    //  var el = _.find(events, {id:eventId});
-    //  if (el){
-    //    defer.resolve(el);
-    //  } else {
-    //    eventsBackEnd.get(eventId).then(function(resp){
-    //      defer.redolve(resp.data);
-    //    }, function () {
-    //      defer.reject();
-    //    });
-    //  }
-    //  return defer.promise;
-    //},
+    sendMessage:function(message, chatRoomId){
+      return chatroomsBackEnd.sendMessage(message, chatRoomId);
+    },
+    createDialog:function(user, message){
+      return chatroomsBackEnd.createNew(user, message);
+    },
+    invite: function(chatRoomId, user){
+      return chatroomsBackEnd.invite(chatRoomId, user);
+    },
+    get: function(chatRoomId){
+      return _.find(chatRooms, {id:chatRoomId});
+    },
+    getFull: function(chatRoomId){
+      return chatroomsBackEnd.getFull(chatRoomId).then(function(resp){
+        var chatRoom = resp.data;
+        _.remove(chatRooms, {id:chatRoom.id});
+        chatRoom.lastMessage = chatRoom.messages[chatRoom.messages.length-1];
+        chatRooms.unshift(chatRoom);
+        return chatRoom;
+      });
+    },
+    leave: function(chatRoomId){
+      return chatroomsBackEnd.leave(chatRoomId);
+    },
     subscribe:function(){
       socket.subscribeModel('chatrooms', function (msg) {
+        var chatRoom;
         switch (msg.verb) {
           case 'created':
-            count.count += 1;
-            eventsBackEnd.get(msg.id).then(function (resp) {
-              events.push(resp.data);
+            authUserService.getUser().then(function(user){
+              if (_.indexOf(msg.userIds, user.id)>=0) {
+                chatroomsBackEnd.get(msg.id).then(function (resp) {
+                  chatRooms.push(resp.data);
+                  $timeout(function(){return;});
+                });              }
             });
             break;
-          case 'updated':
-            eventsBackEnd.get(msg.id).then(function (resp) {
-              var el = _.find(events, {id: msg.id});
-              var index = _.indexOf(events, el);
-              events[index] = resp.data;
-            });
+          case 'userGone':
+            chatRoom = _.find(chatRooms, {id:msg.id});
+            if (chatRoom){
+              _.remove(chatRoom.users, function(user){
+                return user.id === msg.userId;
+              });
+            }
+            $timeout(function(){return;});
             break;
-          case 'destroyed':
-            _.remove(events, {id: msg.id});
-            $timeout(function(){count.count -= 1;});
+          case 'newMessage':
+            chatRoom = _.find(chatRooms, {id:msg.id});
+            authUserService.getUser().then(function(user){
+              if (_.indexOf(msg.userIds, user.id)>=0) {
+                chatroomsBackEnd.getMessage(msg.messageId).then(function (resp) {
+                  chatRoom.messages.push(resp.data);
+                  chatRoom.lastMessage = resp.data;
+                });
+              }
+            });
+            $timeout(function(){return;});
+            break;
+          case 'userAdded':
+            chatRoom = _.find(chatRooms, {id:msg.id});
+            if (chatRoom){
+
+              _.remove(chatRoom.users, function(user){
+                return user.id === msg.userId;
+              });
+            }
+            $timeout(function(){return;});
             break;
           default:
             return;

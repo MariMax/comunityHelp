@@ -28,11 +28,41 @@ angular.module('chatroomsModule').config(function ($stateProvider) {
 
           return defer.promise;
         },
-        chatrooms:function(chatroomsBackEnd, authUserService){
+        chatRooms:function(chatroomsDataService, authUserService){
           return authUserService.getUser().then(function(user) {
-            return chatroomsBackEnd.getList(user);
+            return chatroomsDataService.getList(user);
           });
         }
-      }
+      }})
+        .state('chats.item',{
+          url:'/item/:id',
+          controller:'ChatListItemController',
+          templateUrl: 'app/chatrooms/views/chatroomItem.html',
+          resolve:{
+            user:function(authUserService, $q, $state){
+              var defer = $q.defer();
+              authUserService.getUser().then(function(user){
+                if (user&&user.loggedIn) {
+                  defer.resolve();
+                } else{
+                  defer.reject();
+                  $state.go('auth.signIn');
+                }
+              }, function(){
+                defer.reject();
+                $state.go('auth.signIn');
+              });
+
+              return defer.promise;
+            },
+            chatRoom:function(chatroomsDataService, authUserService, $stateParams, $state){
+              return authUserService.getUser().then(function() {
+                return chatroomsDataService.getFull($stateParams.id);
+              }).catch(function(){
+                $state.go('auth.signIn');
+              });
+            }
+          }
+
     });
 });

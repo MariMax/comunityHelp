@@ -18,6 +18,11 @@ angular.module('userModule').factory('userBackEnd', function ($http, baseUrl,che
       return $http.post(baseUrl + '/user/get', {id:id}).then(function(resp){
         return resp.data;
       });
+    },
+    getUserByEmail:function(email){
+      return $http.post(baseUrl + '/user/getByEmail', {email:email}).then(function(resp){
+        return resp.data;
+      });
     }
   };
 });

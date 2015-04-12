@@ -6,14 +6,14 @@
  */
 
 module.exports = {
-	
+
 
 
   /**
    * `SettingsController.get()`
    */
   get: function (req, res) {
-    return res.json({
+    return res.jsonx({
       passwordMinLength: process.env.PASS_MIN_LENGTH
     });
   }

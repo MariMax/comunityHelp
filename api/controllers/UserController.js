@@ -12,7 +12,7 @@ module.exports = {
     if (req.body.id) {
       searchObject.id = req.body.id;
     }
-    User.find(searchObject, function(err, users){
+    User.find().where(searchObject).exec(function(err, users){
       if (err){
         res.satus(500).send();
       } else {
@@ -20,8 +20,15 @@ module.exports = {
       }
     })
   },
+  getByEmail: function(req, res){
+    User.find().where({email:req.body.email}).then(function(user){
+      res.status(200).jsonx(user);
+    }).catch(function(err){
+      res.status(404).send({message:'Cant find user', error:err});
+    });
+  },
   update: function(req, res) {
-    var modyfiedUser = {name:req.body.name, lastName:req.body.lastName, avatar:req.body.avatar};
+    var modyfiedUser = {name:req.body.name, lastName:req.body.lastName};
     if (req.user.admin){
       modyfiedUser.admin = req.body.admin;
     }
